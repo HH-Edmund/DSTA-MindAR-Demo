@@ -2,31 +2,33 @@
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<!-- Using A-frame version 1.5.0 -->
-	<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+	<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script> <!-- Using A-frame version 1.5.0 -->
 	<script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 </head>
 
 <body>
-	<!-- Start of a-scene -->
+	<!-- Start of a-scene, A-Frame uses right-hand coordinates -->
+	<!-- For more information: https://aframe.io/docs/1.5.0/guides/building-a-basic-scene.html#transforming-an-entity-in-3d -->
 	<a-scene mindar-image="imageTargetSrc: ./imageTargets/card.mind;" color-space="sRGB"
 		renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
 		device-orientation-permission-ui="enabled: false">
 
-		<!--Declare your assets here-->
+		<!-- Asset management system -->
+		<!-- For more information: https://aframe.io/docs/1.5.0/core/asset-management-system.html -->
 		<a-assets>
+
 			<img id="card" src="./images/card.png" />
 			<a-asset-item id="avatarModel" src="./models/HelloHolo.gltf"></a-asset-item>
 
 		</a-assets>
 
-		<!--Camera settings-->
+		<!-- Camera settings -->
 		<a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
 		<!-- Place your A-Frame Primitives below -->
 		<a-entity mindar-image-target="targetIndex: 0">
 
-
+			<!-- Display the image of the card onto a primitive plane -->
 			<a-plane src="#card" position="0 0 0" height="1" width="0.552" rotation="0 0 90"></a-plane>
 
 			<!-- Find out more about TEXT via https://aframe.io/docs/1.5.0/primitives/a-text.html -->
@@ -36,7 +38,7 @@
 			<a-text text="value: Portfolio@somedomain.com" align="left" position="-0.45 0.05 0" width="1"></a-text>
 
 			<!-- Find out more about GLTF Models via https://aframe.io/docs/1.5.0/components/gltf-model.html -->
-			<a-gltf-model rotation="0 0 0 " position="-0.1 0.45 0.1" scale="0.001 0.001 0.001" src="#avatarModel"
+			<a-gltf-model src="#avatarModel" rotation="0 0 0 " position="-0.1 0.45 0.1" scale="0.001 0.001 0.001"
 				animation="property: position; to: 0.1 0.45 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
 
 		</a-entity>
