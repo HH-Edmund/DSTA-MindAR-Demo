@@ -4,6 +4,29 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script> <!-- Using A-frame version 1.5.0 -->
 	<script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+	<!-- A-Frame Hologram Shader by TravisBarryDick https://github.com/TravisBarryDick/aframe-hologram-shader -->
+	<script src="https://unpkg.com/aframe-hologram-shader"></script>
+	<!-- Simple shader for rainbow shimmer -->
+	<script src="./effects/holo-shimmer.js"></script>
+	<!-- Simple Javascript function to open url in a new tab -->
+	<script>
+		AFRAME.registerComponent('navigate-on-click', {
+			schema: {
+				url: { type: 'string', default: '' }
+			},
+
+			init: function () {
+				var data = this.data;
+				var el = this.el;
+
+				el.addEventListener('click', function () {
+					window.open(data.url, '_blank');
+				});
+			}
+		});
+	</script>
+	
 </head>
 
 <body>
@@ -16,50 +39,52 @@
 		<!-- Asset management system -->
 		<!-- For more information: https://aframe.io/docs/1.5.0/core/asset-management-system.html -->
 		<a-assets>
-
-			<img id="card" src="./images/card.png" />
+			<img id="card" src="./images/card.png">
 			<a-asset-item id="avatarModel" src="./models/HelloHolo.gltf"></a-asset-item>
-
 		</a-assets>
 
 		<!-- Camera settings -->
-		<a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
+		<a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;"
+			raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
 
-	
 		<!-- Place your A-Frame Primitives below -->
 		<a-entity mindar-image-target="targetIndex: 0">
-
+			
 			<!-- Display the image of the card onto a primitive plane -->
-			<a-plane src="#card" position="0 0 0" height="1" width="0.552" rotation="0 0 90"></a-plane>
+			<a-plane src="#card" position="0 0 0" height="1" width="0.552" rotation="0 0 90" material="shader: hologram; 
+					glitchBarDrift: 0.05;
+					rgbSeparation: 0.5;
+					glitchRate: 1;">
+			</a-plane>
+			
+			<a-plane src="#card" position="0 -0.8 0" height="1" width="0.552" rotation="0 0 90" 
+			material="shader: holo-shimmer; shimmerIntensity: 0.2; foilBrightness: 0.5; tiling: 2; transparent: true;">
+			</a-plane>
+
+			
 
 			<!-- Find out more about TEXT via https://aframe.io/docs/1.5.0/primitives/a-text.html -->
 			<a-text text="value: Your name" align="left" position="-0.45 0.2 0" width="1"></a-text>
 			<a-text text="value: Your title" align="left" position="-0.45 0.15 0" width="1"></a-text>
 
-			<a-text 
-				text="value: Contact Me; align: center; width: 1" 
-    			geometry="primitive: plane; width: 0.25; height: 0.1;" 
-    			material="color: black; opacity: 0.5" 
-    			position="0.35 -0.2 0.01" 
-    			class="clickable"
-    			link="href: mailto: youremail@domain.com">>	
+			<!-- Clickable text using HTML href attribute -->
+			<a-text text="value: Contact Me; align: center; width: 1"
+				geometry="primitive: plane; width: 0.25; height: 0.1;" material="color: gray; opacity: 1"
+				position="0.35 -0.2 0.01" class="clickable" link="href: mailto: youremail@domain.com">
 			</a-text>
 
-			<a-text 
-				text="value: Click here for my portfolio; align: center; width: 1" 
-    			geometry="primitive: plane; width: 0.6; height: 0.1;" 
-    			material="color: black; opacity: 0.5" 
-    			position="0 -0.33 0.01" 
-    			class="clickable"
-    			link="href: https://helloholo.sg/">>	
+			<!--- Clickable text using our Javascript Function -->
+			<a-text text="value: Click here for my portfolio; align: center; width: 1"
+				geometry="primitive: plane; width: 0.6; height: 0.1;" material="color: gray; opacity: 0.5"
+				position="0 -0.33 0.01" class="clickable" navigate-on-click="url: https://www.helloholo.sg">
 			</a-text>
 			
-			
-			
+
 			<!-- Find out more about GLTF Models via https://aframe.io/docs/1.5.0/components/gltf-model.html -->
 			<a-gltf-model src="#avatarModel" rotation="0 0 0 " position="-0.1 0.45 0.1" scale="0.001 0.001 0.001"
 				animation="property: position; to: 0.1 0.45 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
 
+				
 		</a-entity>
 	</a-scene>
 </body>
