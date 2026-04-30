@@ -1,0 +1,28 @@
+AFRAME.registerShader('card-glow', {
+  schema: {
+    color: { type: 'color', is: 'uniform', default: '#00e5ff' },
+    intensity: { type: 'float', is: 'uniform', default: 1.0 }
+  },
+  vertexShader: `
+    varying vec2 vUv;
+
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `,
+  fragmentShader: `
+    varying vec2 vUv;
+    uniform vec3 color;
+    uniform float intensity;
+
+    void main() {
+      vec2 centeredUv = vUv - vec2(0.5);
+      float distanceFromCenter = length(centeredUv * vec2(0.8, 1.0));
+      float glow = 1.0 - smoothstep(0.08, 0.52, distanceFromCenter);
+      float alpha = glow * glow * 0.72 * intensity;
+
+      gl_FragColor = vec4(color, alpha);
+    }
+  `
+});
