@@ -10,7 +10,6 @@
 	<!-- Simple shader for holographic shimmer -->
 	<script src="./effects/holo-shimmer.js"></script>
 	<script src="./effects/card-glow.js"></script>
-	<script src="./effects/shader-time.js"></script>
 	<script src="./effects/halo-rings.js"></script>
 	<script src="./effects/matrix-stream.js"></script>
 
@@ -64,23 +63,21 @@
 			</a-plane>
 
 			<!-- Matrix Stream Effect -->
-			<a-plane position="0 0 0.015" height="0.552" width="1" matrix-stream="color: #63ff9d; intensity: 0.85;"></a-plane>
+			<a-plane position="0 0 0.015" height="0.552" width="1"
+				matrix-stream="color: #63ff9d; intensity: 0.85;"></a-plane>
 
 			<!--
 				Display the image of the card onto a primitive plane
 				Glitch effect is configured via material properties
 			-->
-			<a-plane
-				src="#card"
-				position="0 0 0" height="1" width="0.552" rotation="0 0 90"
-				material="shader: hologram; glitchBarDrift: 0.05; rgbSeparation: 0.5; glitchRate: 1;"
-			>
+			<a-plane src="#card" position="0 0 0" height="1" width="0.552" rotation="0 0 90"
+				material="shader: hologram; glitchBarDrift: 0.05; rgbSeparation: 0.5; glitchRate: 1;">
 			</a-plane>
-		
+
 			<a-plane src="#card" position="0 -0.7 0" height="1" width="0.552" rotation="0 0 90"
 				material="shader: holo-shimmer; shimmerIntensity: 0.2; foilBrightness: 0.5; tiling: 2; transparent: true;">
 			</a-plane>
-			
+
 			<!-- Find out more about TEXT via https://aframe.io/docs/1.5.0/primitives/a-text.html -->
 			<a-text text="value: Your name" align="left" position="-0.45 0.2 0" width="1"></a-text>
 			<a-text text="value: Your title" align="left" position="-0.45 0.15 0" width="1"></a-text>
