@@ -12,6 +12,7 @@
 	<script src="./effects/card-glow.js"></script>
 	<script src="./effects/halo-rings.js"></script>
 	<script src="./effects/matrix-stream.js"></script>
+	<script src="./effects/apply-glow.js"></script>
 
 	<!-- Simple Javascript function to open url in a new tab -->
 	<script>
@@ -43,7 +44,7 @@
 		<!-- For more information: https://aframe.io/docs/1.5.0/core/asset-management-system.html -->
 		<a-assets>
 			<img id="card" src="./images/card.png">
-			<a-asset-item id="avatarModel" src="./models/HelloHolo.gltf"></a-asset-item>
+			<a-asset-item id="avatarModel" src="./models/MyAvatar.glb"></a-asset-item>
 		</a-assets>
 
 		<!-- Camera settings -->
@@ -53,30 +54,32 @@
 		<!-- Place your A-Frame Primitives below -->
 		<a-entity mindar-image-target="targetIndex: 0">
 			<!-- Card Glow Effect -->
-			<a-plane position="0 0 -0.02" height="2" width="1.2" rotation="0 0 90"
+			<!-- <a-plane position="0 0 -0.02" height="2" width="1.2" rotation="0 0 90"
 				material="shader: card-glow; color: #00e5ff; intensity: 1.35; transparent: true; depthWrite: false; blending: additive;">
-			</a-plane>
+			</a-plane> -->
 
 			<!-- Halo Rings Effect -->
-			<a-plane position="0 0 -0.1" height="2.2" width="2.2" rotation="0 0 90" shader-time
+			<!-- <a-plane position="0 0 -0.1" height="2.2" width="2.2" rotation="0 0 90" shader-time
 				material="shader: halo-rings; color: #00e5ff; intensity: 0.9; transparent: true; depthWrite: false; blending: additive;">
-			</a-plane>
+			</a-plane> -->
 
 			<!-- Matrix Stream Effect -->
-			<a-plane position="0 0 0.015" height="0.552" width="1"
-				matrix-stream="color: #63ff9d; intensity: 0.85;"></a-plane>
+			<!-- <a-plane position="0 0 0.015" height="0.552" width="1" matrix-stream="color: #63ff9d; intensity: 0.85;"></a-plane> -->
 
 			<!--
 				Display the image of the card onto a primitive plane
 				Glitch effect is configured via material properties
 			-->
-			<a-plane src="#card" position="0 0 0" height="1" width="0.552" rotation="0 0 90"
-				material="shader: hologram; glitchBarDrift: 0.05; rgbSeparation: 0.5; glitchRate: 1;">
-			</a-plane>
+			<!-- <a-plane
+				src="#card"
+				position="0 0 0" height="1" width="0.552" rotation="0 0 90"
+				material="shader: hologram; glitchBarDrift: 0.05; rgbSeparation: 0.5; glitchRate: 1;"
+			>
+			</a-plane> -->
 
-			<a-plane src="#card" position="0 -0.7 0" height="1" width="0.552" rotation="0 0 90"
+			<!-- <a-plane src="#card" position="0 -0.7 0" height="1" width="0.552" rotation="0 0 90"
 				material="shader: holo-shimmer; shimmerIntensity: 0.2; foilBrightness: 0.5; tiling: 2; transparent: true;">
-			</a-plane>
+			</a-plane> -->
 
 			<!-- Find out more about TEXT via https://aframe.io/docs/1.5.0/primitives/a-text.html -->
 			<a-text text="value: Your name" align="left" position="-0.45 0.2 0" width="1"></a-text>
@@ -95,8 +98,10 @@
 			</a-text>
 
 			<!-- Find out more about GLTF Models via https://aframe.io/docs/1.5.0/components/gltf-model.html -->
-			<a-gltf-model src="#avatarModel" rotation="0 0 0 " position="-0.1 0.45 0.1" scale="0.001 0.001 0.001"
-				animation="property: position; to: 0.1 0.45 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
+			<a-gltf-model src="#avatarModel" apply-glow="part: Hoodie, Hair, Pants" rotation="0 0 0 "
+				position="-0.1 -0.5 0.1" scale="1 1 1"
+				animation="property: position; to: 0.1 -0.5 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
+			</a-gltf-model>
 		</a-entity>
 	</a-scene>
 </body>
