@@ -1,3 +1,7 @@
+// Created by HelloHolo developers
+// Matrix stream component. 
+// <a-plane position="0 0 0.01" width="1" height="0.6" rotation="0 0 0" matrix-stream="color: #63ff9d; intensity: 0.85; columns: 15; speed: 120"></a-plane>
+
 AFRAME.registerComponent('matrix-stream', {
   schema: {
     color: { type: 'color', default: '#63ff9d' },
