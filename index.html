@@ -53,7 +53,7 @@
 		<!-- Asset management system -->
 		<!-- For more information: https://aframe.io/docs/1.5.0/core/asset-management-system.html -->
 		<a-assets>
-			<img id="card" src="./images/card.jpg">
+			<img id="card" src="./images/virtualCard.png">
 			<a-asset-item id="avatarModel" src="./models/MyAvatar.glb"></a-asset-item>
 		</a-assets>
 
@@ -92,8 +92,8 @@
 			</a-plane>
 
 			<!-- Find out more about TEXT via https://aframe.io/docs/1.5.0/primitives/a-text.html -->
-			<a-text text="value: Your name" align="left" position="-0.45 0.2 0" width="1"></a-text>
-			<a-text text="value: Your title" align="left" position="-0.45 0.15 0" width="1"></a-text>
+			<a-text text="value: Your name" align="left" position="-0.44 0.08 0" width="1.5"></a-text>
+			<a-text text="value: Your title" align="left" position="-0.44 0.02 0" width="1"></a-text>
 
 			<!-- Clickable text using HTML href attribute -->
 			<a-text text="value: Contact Me; align: center; width: 1"
@@ -104,7 +104,7 @@
 			<!--- Clickable text using our Javascript Function -->
 			<a-text text="value: Click here for my portfolio; align: center; width: 1"
 				geometry="primitive: plane; width: 0.6; height: 0.1;" material="color: gray; opacity: 0.5"
-				position="0 -0.33 0.01" class="clickable" navigate-on-click="url: https://www.helloholo.sg">
+				position="0 -0.35 0.01" class="clickable" navigate-on-click="url: https://www.helloholo.sg">
 			</a-text>
 
 			<!-- Find out more about GLTF Models via https://aframe.io/docs/1.5.0/components/gltf-model.html
@@ -114,11 +114,11 @@
 			       effect-rings, effect-glitch
 			     Use `__id` suffixes (e.g. effect-glow__crown) to stack multiple
 			     instances of the same effect with different colors per mesh. -->
-			<a-entity position="0.35 0.2 0.1" rotation="90 0 0" scale="0.4 0.4 0.4">
-				<a-gltf-model id="avatarModel" src="#avatarModel" position="0 0 0" rotation="0 0 0" 
+			<a-entity position="0.35 0.2 0.1" rotation="90 0 0">
+				<a-gltf-model id="avatarModel" src="#avatarModel" position="0 0 0" rotation="0 0 0" scale="0.4 0.4 0.4" 
 					effect-glow="part: Hoodie; color: #00e5ff; intensity: 2.5"
 					effect-matrix="part: Pants; color: #63ff9d" effect-rings="part: Hair; color: #ff66ff"
-					effect-glitch="part: Eyes; color: #ff3aa3; glitchRate: 1.2" ">
+					effect-glitch="part: Eyes; color: #ff3aa3; glitchRate: 1.2">
 				</a-gltf-model>
 			</a-entity>
 			
