@@ -1,9 +1,12 @@
+// Created by HelloHolo developers
+// Holographic shimmer shader based on camera position 
+// material="shader: holo-shimmer; shimmerIntensity: 0.5;  foilBrightness: 0.2; tiling: 1.0"
 AFRAME.registerShader('holo-shimmer', {
   schema: {
     src: {type: 'map', is: 'uniform'},
     shimmerIntensity: {type: 'float', is: 'uniform', default: 0.5},
     foilBrightness: {type: 'float', is: 'uniform', default: 0.2},
-    tiling: {type: 'float', is: 'uniform', default: 5.0} // Higher = shorter/more gradients
+    tiling: {type: 'float', is: 'uniform', default: 1.0} // Higher = shorter/more gradients
   },
   vertexShader: `
     varying vec2 vUv;
