@@ -53,7 +53,7 @@
 		<!-- Asset management system -->
 		<!-- For more information: https://aframe.io/docs/1.5.0/core/asset-management-system.html -->
 		<a-assets>
-			<img id="card" src="./images/card.png">
+			<img id="card" src="./images/card.jpg">
 			<a-asset-item id="avatarModel" src="./models/MyAvatar.glb"></a-asset-item>
 		</a-assets>
 
@@ -86,11 +86,11 @@
 				material="shader: hologram; glitchBarDrift: 0.05; rgbSeparation: 0.5; glitchRate: 1;"
 			>
 			</a-plane> -->
-		
-			<!-- <a-plane src="#card" position="0 -0.7 0" height="1" width="0.552" rotation="0 0 90"
+
+			<a-plane src="#card" position="0 0 0" width="1" height="0.6"  rotation="0 0 0"
 				material="shader: holo-shimmer; shimmerIntensity: 0.2; foilBrightness: 0.5; tiling: 2; transparent: true;">
-			</a-plane> -->
-			
+			</a-plane>
+
 			<!-- Find out more about TEXT via https://aframe.io/docs/1.5.0/primitives/a-text.html -->
 			<a-text text="value: Your name" align="left" position="-0.45 0.2 0" width="1"></a-text>
 			<a-text text="value: Your title" align="left" position="-0.45 0.15 0" width="1"></a-text>
@@ -114,13 +114,14 @@
 			       effect-rings, effect-glitch
 			     Use `__id` suffixes (e.g. effect-glow__crown) to stack multiple
 			     instances of the same effect with different colors per mesh. -->
-			<a-gltf-model id="avatarModel" src="#avatarModel" rotation="0 0 0" position="-0.1 -0.5 0.1" scale="1 1 1"
-				effect-glow="part: Hoodie; color: #00e5ff; intensity: 2.5"
-				effect-matrix="part: Pants; color: #63ff9d"
-				effect-rings="part: Hair; color: #ff66ff"
-				effect-glitch="part: Eyes; color: #ff3aa3; glitchRate: 1.2"
-				animation="property: position; to: 0.1 -0.5 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
-			</a-gltf-model>
+			<a-entity position="0.35 0.2 0.1" rotation="90 0 0" scale="0.4 0.4 0.4">
+				<a-gltf-model id="avatarModel" src="#avatarModel" position="0 0 0" rotation="0 0 0" 
+					effect-glow="part: Hoodie; color: #00e5ff; intensity: 2.5"
+					effect-matrix="part: Pants; color: #63ff9d" effect-rings="part: Hair; color: #ff66ff"
+					effect-glitch="part: Eyes; color: #ff3aa3; glitchRate: 1.2" ">
+				</a-gltf-model>
+			</a-entity>
+			
 		</a-entity>
 	</a-scene>
 </body>
